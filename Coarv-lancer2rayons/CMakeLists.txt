@@ -4,6 +4,6 @@
 cmake_minimum_required (VERSION 3.8)
 
 # Ajoutez une source à l'exécutable de ce projet.
-add_executable (Coarv-lancer2rayons "main.cpp" "main.h" "vec3.h" "color.h" "ray.h" "hittable.h" "sphere.h" "rtweekend.h" "interval.h" "camera.h")
+add_executable (Coarv-lancer2rayons "main.cpp" "main.h" "vec3.h" "color.h" "ray.h" "hittable.h" "sphere.h" "rtweekend.h" "interval.h" "camera.h" "vec3.cpp")
 
 # TODO: Ajoutez des tests et installez des cibles si nécessaire.

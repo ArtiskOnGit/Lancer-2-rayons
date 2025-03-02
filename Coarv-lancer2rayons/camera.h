@@ -1,6 +1,6 @@
 #ifndef CAMERA_H
 #define CAMERA_H
-
+#include "vec3.h"
 #include "hittable.h"
 
 class camera {
@@ -75,6 +75,7 @@ private:
     color ray_color(const ray& r, const hittable& world) const {
         hit_record hit;
         if (world.hit(r, interval(0, infinity), hit)) {
+            vec3 random_direction = vec3::random_on_hemisphere(hit.normal);
             return 0.5 * (hit.normal + color(1, 1, 1));
         }
 

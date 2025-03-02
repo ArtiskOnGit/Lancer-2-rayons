@@ -84,6 +84,13 @@ build Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\main.cpp.obj: CXX_C
   TARGET_COMPILE_PDB = Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\
   TARGET_PDB = Coarv-lancer2rayons\Coarv-lancer2rayons.pdb
 
+build Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\vec3.cpp.obj: CXX_COMPILER__Coarv-lancer2rayons_unscanned_Debug C$:\Users\Alexandre\Documents\cours\tries\RV\Lancer-2-rayons\Coarv-lancer2rayons\vec3.cpp || cmake_object_order_depends_target_Coarv-lancer2rayons
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir
+  OBJECT_FILE_DIR = Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir
+  TARGET_COMPILE_PDB = Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\
+  TARGET_PDB = Coarv-lancer2rayons\Coarv-lancer2rayons.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Coarv-lancer2rayons
@@ -92,7 +99,7 @@ build Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\main.cpp.obj: CXX_C
 #############################################
 # Link the executable Coarv-lancer2rayons\Coarv-lancer2rayons.exe
 
-build Coarv-lancer2rayons\Coarv-lancer2rayons.exe: CXX_EXECUTABLE_LINKER__Coarv-lancer2rayons_Debug Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\main.cpp.obj
+build Coarv-lancer2rayons\Coarv-lancer2rayons.exe: CXX_EXECUTABLE_LINKER__Coarv-lancer2rayons_Debug Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\main.cpp.obj Coarv-lancer2rayons\CMakeFiles\Coarv-lancer2rayons.dir\vec3.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
