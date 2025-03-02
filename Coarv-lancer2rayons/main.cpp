@@ -10,7 +10,7 @@
 color ray_color(const ray& r, const hittable_list& world) {
 
     hit_record hit;
-    bool res = world.hit(r, 0, LONG_MAX, hit);
+    bool res = world.hit(r, interval(0, infinity), hit);
     if (res) {
         return 0.5*(hit.normal+color(1, 1, 1));
     }

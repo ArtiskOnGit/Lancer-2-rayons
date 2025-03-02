@@ -19,15 +19,15 @@ public :
 	void clear() { objects.clear(); }
 
 
-	bool hit(const ray& r, double ray_tmin, double ray_tmax, hit_record& rec) const override {
+	bool hit(const ray& r, interval ray_t, hit_record& rec) const override {
 		hit_record temp_hit;
 		bool hit_anything = false;
-		double closest_so_far = ray_tmax;
+		interval checked_interval = ray_t;
 
 		for (const auto& object : objects) {
-			if (object->hit(r, ray_tmin, closest_so_far, temp_hit)) {
+			if (object->hit(r, checked_interval, temp_hit)) {
 				hit_anything = true;
-				closest_so_far = temp_hit.t;
+				checked_interval.max = temp_hit.t;
 				rec = temp_hit;
 			}
 		}
