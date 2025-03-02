@@ -1,7 +1,8 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "hittable.h";
+#include "hittable.h"
+
 class Sphere : public hittable {
 
 private :

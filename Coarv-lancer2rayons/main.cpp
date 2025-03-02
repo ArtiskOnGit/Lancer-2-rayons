@@ -7,18 +7,6 @@
 
 
 
-color ray_color(const ray& r, const hittable_list& world) {
-
-    hit_record hit;
-    bool res = world.hit(r, interval(0, infinity), hit);
-    if (res) {
-        return 0.5*(hit.normal+color(1, 1, 1));
-    }
-    
-    vec3 dir = unit_vector(r.direction());
-    auto a = 0.5 * (dir.y() + 1.0);
-    return (1.0 - a) * color(0, 0, 9.0) + a * color(0.8, 0.9, 1.0);
-}
 
 int main() {
 
@@ -32,6 +20,7 @@ int main() {
 
     cam.aspect_ratio = 16.0 / 9.0;
     cam.image_width = 400;
+    cam.samples_per_pixel = 100;
 
     cam.render(world);
 }
