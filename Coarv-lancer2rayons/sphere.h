@@ -2,7 +2,7 @@
 #define SPHERE_H
 
 #include "hittable.h";
-class Sphere : hittable {
+class Sphere : public hittable {
 
 private :
 	point3 center;

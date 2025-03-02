@@ -1,36 +1,18 @@
-﻿#include "color.h"
-#include "ray.h"
-#include "vec3.h"
+﻿#include "rtweekend.h"
+
+#include "hittable.h"
+#include "hittable_list.h"
 #include "sphere.h"
 #include <iostream>
 
 
 
-//double hit_sphere(const point3& center, double radius, const ray& r) {
-//    point3 c_q = center - r.origin();
-//    double a = r.direction().length_squared();
-//   // double b = dot(-2.0 * r.direction(), c_q);
-//    double h = dot(r.direction(), c_q);
-//    double c = c_q.length_squared() - radius * radius;
-//
-//
-//    double discrim = h*h - a * c;
-//    if (discrim >= 0) {
-//        return (h - std::sqrt(discrim))/(a);
-//    }
-//    return -1.0;
-//
-//}
+color ray_color(const ray& r, const hittable_list& world) {
 
-
-color ray_color(const ray& r, const Sphere& s) {
-
-    point3 center = point3(0, 0, -1.0);
     hit_record hit;
-    bool res = s.hit(r, 0, LONG_MAX, hit);
-    //calculate normal :
+    bool res = world.hit(r, 0, LONG_MAX, hit);
     if (res) {
-        return 0.5*(hit.normal+vec3(1, 1, 1));
+        return 0.5*(hit.normal+color(1, 1, 1));
     }
     
     vec3 dir = unit_vector(r.direction());
@@ -73,7 +55,11 @@ int main() {
 
     std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
 
-    Sphere s = Sphere(point3(0, 0, -1.0), 0.2);
+
+    hittable_list world = hittable_list();
+    world.add(make_shared<Sphere>(point3(0, 0, -1.0), 0.2));
+    world.add(make_shared<Sphere>(point3(0.6, 0.6, -1.0), 0.5));
+
     for (int j = 0; j < image_height; j++) {
         std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
         for (int i = 0; i < image_width; i++) {
@@ -81,7 +67,7 @@ int main() {
             auto ray_direction = pixel_center - camera_center;
             ray r(camera_center, ray_direction);
             
-            color pixel_color = ray_color(r, s);
+            color pixel_color = ray_color(r, world);
             write_color(std::cout, pixel_color);
         }
     }

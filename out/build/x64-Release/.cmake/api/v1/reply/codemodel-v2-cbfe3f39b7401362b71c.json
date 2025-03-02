@@ -10,7 +10,7 @@
 					[
 						1
 					],
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-RelWithDebInfo-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.8"
@@ -20,7 +20,7 @@
 				},
 				{
 					"build" : "Coarv-lancer2rayons",
-					"jsonFile" : "directory-Coarv-lancer2rayons-Debug-29369c3fc3acbdd15916.json",
+					"jsonFile" : "directory-Coarv-lancer2rayons-RelWithDebInfo-29369c3fc3acbdd15916.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.8"
@@ -34,7 +34,7 @@
 					]
 				}
 			],
-			"name" : "Debug",
+			"name" : "RelWithDebInfo",
 			"projects" : 
 			[
 				{
@@ -55,7 +55,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "Coarv-lancer2rayons::@4a82b0cfa919386b573e",
-					"jsonFile" : "target-Coarv-lancer2rayons-Debug-c4e80d9d476206e4a352.json",
+					"jsonFile" : "target-Coarv-lancer2rayons-RelWithDebInfo-68e784095da9d72666a2.json",
 					"name" : "Coarv-lancer2rayons",
 					"projectIndex" : 0
 				}
@@ -65,7 +65,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Alexandre/Documents/cours/tries/RV/Lancer-2-rayons/out/build/x64-Debug",
+		"build" : "C:/Users/Alexandre/Documents/cours/tries/RV/Lancer-2-rayons/out/build/x64-Release",
 		"source" : "C:/Users/Alexandre/Documents/cours/tries/RV/Lancer-2-rayons"
 	},
 	"version" : 
