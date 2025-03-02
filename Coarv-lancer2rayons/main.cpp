@@ -1,32 +1,41 @@
 ﻿#include "color.h"
 #include "ray.h"
 #include "vec3.h"
-
+#include "sphere.h"
 #include <iostream>
 
 
 
-bool hit_sphere(const point3& center, double radius, const ray& r) {
-    point3 c_q = center - r.origin();
-    double a = dot(r.direction(), r.direction());
-    double b = dot(-2.0 * r.direction(), c_q);
-    double c = dot(c_q, c_q) - radius * radius;
+//double hit_sphere(const point3& center, double radius, const ray& r) {
+//    point3 c_q = center - r.origin();
+//    double a = r.direction().length_squared();
+//   // double b = dot(-2.0 * r.direction(), c_q);
+//    double h = dot(r.direction(), c_q);
+//    double c = c_q.length_squared() - radius * radius;
+//
+//
+//    double discrim = h*h - a * c;
+//    if (discrim >= 0) {
+//        return (h - std::sqrt(discrim))/(a);
+//    }
+//    return -1.0;
+//
+//}
 
-    double delta = b * b - 4 * a * c;
-    return delta >= 0;
-}
 
+color ray_color(const ray& r, const Sphere& s) {
 
-color ray_color(const ray& r) {
-
+    point3 center = point3(0, 0, -1.0);
+    hit_record hit;
+    bool res = s.hit(r, 0, LONG_MAX, hit);
+    //calculate normal :
+    if (res) {
+        return 0.5*(hit.normal+vec3(1, 1, 1));
+    }
+    
     vec3 dir = unit_vector(r.direction());
     auto a = 0.5 * (dir.y() + 1.0);
-
-    if (hit_sphere(point3(0, 0, -1.0), 0.2, r)) {
-        return color(1.0, 0.0 ,0.0);
-    }
-
-    return (1.0 - a) * color(0, 0, 1.0) + a * color(0.5, 0.7, 1.0);
+    return (1.0 - a) * color(0, 0, 9.0) + a * color(0.8, 0.9, 1.0);
 }
 
 int main() {
@@ -64,14 +73,15 @@ int main() {
 
     std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
 
+    Sphere s = Sphere(point3(0, 0, -1.0), 0.2);
     for (int j = 0; j < image_height; j++) {
         std::clog << "\rScanlines remaining: " << (image_height - j) << ' ' << std::flush;
         for (int i = 0; i < image_width; i++) {
             auto pixel_center = pixel00_loc + (i * pixel_delta_u) + (j * pixel_delta_v);
             auto ray_direction = pixel_center - camera_center;
             ray r(camera_center, ray_direction);
-
-            color pixel_color = ray_color(r);
+            
+            color pixel_color = ray_color(r, s);
             write_color(std::cout, pixel_color);
         }
     }

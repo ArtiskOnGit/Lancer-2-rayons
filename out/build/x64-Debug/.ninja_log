@@ -1,17 +1,3 @@
-# ninja log v5
-0	321	7620868447530887	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-321	532	7620868449283019	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-0	757	7620888802835681	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-758	1017	7620888805040078	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-1	312	7620892926275914	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-313	514	7620892927953505	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-0	332	7620895355581356	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-336	527	7620895357155658	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-0	317	7620896010668043	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-318	498	7620896012162662	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-1	334	7620910147741026	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-335	540	7620910149353266	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-0	375	7620911055723700	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-376	586	7620911057191973	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
-0	334	7620911415327016	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
-335	535	7620911417012514	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	1530f52baec4f011
+# ninja log v6
+35	1157	7626291515213286	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	6347fc218e8c338f
+1158	1517	7626291526467533	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	31f078b074cd9d0f
