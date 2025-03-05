@@ -447,4 +447,4 @@ _deps
 CMakeUserPresets.json
 
 # builds 
-out\*
+out/*
