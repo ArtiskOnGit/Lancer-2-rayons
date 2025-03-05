@@ -8,7 +8,8 @@ public:
     /* Public Camera Parameters Here */
     double aspect_ratio = 16.0 / 9.0;
     int image_width = 400;
-    int    samples_per_pixel = 10;   // Count of random samples for each pixel
+    int    samples_per_pixel = 10;   // Count of random samples for each pixel.
+    int    max_depth = 10;
 
     void render(const hittable& world) {
         // Render
@@ -21,7 +22,7 @@ public:
                 color pixel_color(0, 0, 0);
                 for (int sample = 0; sample < samples_per_pixel; sample++) {
                     ray r = get_ray(i, j);
-                    pixel_color += ray_color(r, world);
+                    pixel_color += ray_color(r, max_depth, world);
                 }
                 write_color(std::cout, pixel_samples_scale * pixel_color);
             }
@@ -72,16 +73,20 @@ private:
         
     }
 
-    color ray_color(const ray& r, const hittable& world) const {
+    color ray_color(const ray& r, int depth, const hittable& world) const {
+        if (depth <= 0)
+            return color(0, 0, 0);
+
         hit_record hit;
-        if (world.hit(r, interval(0, infinity), hit)) {
+        
+        if (world.hit(r, interval(0.001, infinity), hit)) {
             vec3 random_direction = random_on_hemisphere(hit.normal);
-            return 0.5 * (hit.normal + color(1, 1, 1));
+            return 0.5 * ray_color(ray(hit.p, random_direction), depth - 1, world);;
         }
 
         vec3 dir = unit_vector(r.direction());
         auto a = 0.5 * (dir.y() + 1.0);
-        return (1.0 - a) * color(0, 0, 9.0) + a * color(0.8, 0.9, 1.0);
+        return (1.0 - a) * color(1.0, 1.0, 1.0) + a * color(0.5, 0.7, 1.0);
     }
 
 
