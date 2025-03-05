@@ -1,3 +1,4 @@
-# ninja log v6
-11	1116	7626537596061701	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	6347fc218e8c338f
-1126	1479	7626537607213936	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	31f078b074cd9d0f
+# ninja log v5
+3	54	7628920374776091	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/vec3.cpp.obj	a90f2c92a30d82fb
+1	373	7628921929725039	Coarv-lancer2rayons/CMakeFiles/Coarv-lancer2rayons.dir/main.cpp.obj	49b84b6347a3fe35
+375	1241	7628921938266105	Coarv-lancer2rayons/Coarv-lancer2rayons.exe	191484ea0f01e5fb

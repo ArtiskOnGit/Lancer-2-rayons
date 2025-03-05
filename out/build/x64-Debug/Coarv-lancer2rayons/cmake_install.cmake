@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/Alexandre/Documents/cours/tries/RV/Lancer-2-rayons/Coarv-lancer2rayons
+# Install script for directory: C:/Users/Eleve/source/repos/Lancer-2-rayons/Coarv-lancer2rayons
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/Alexandre/Documents/cours/tries/RV/Lancer-2-rayons/out/install/x64-Debug")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/Eleve/source/repos/Lancer-2-rayons/out/install/x64-Debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
