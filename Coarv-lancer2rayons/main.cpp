@@ -23,4 +23,5 @@ int main() {
     cam.samples_per_pixel = 100;
 
     cam.render(world);
+
 }
