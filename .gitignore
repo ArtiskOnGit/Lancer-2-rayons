@@ -448,3 +448,8 @@ CMakeUserPresets.json
 
 # builds 
 out/*
+
+#ninja
+.ninja_deps
+.ninja_log
+
