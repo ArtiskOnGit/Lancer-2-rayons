@@ -16,6 +16,10 @@ public:
     point3 lookat = point3(0, 0, -1);  // Point camera is looking at
     vec3   vup = vec3(0, 1, 0);     // Camera-relative "up" direction
 
+    double defocus_angle = 0;  // Variation angle of rays through each pixel
+    double focus_dist = 10;    // Distance from camera lookfrom point to plane of perfect focus
+
+
 private:
     /* Private Camera Variables Here */
 
@@ -27,6 +31,8 @@ private:
     vec3 viewport_u, viewport_v, pixel_delta_u, pixel_delta_v;
     vec3 viewport_upper_left, pixel00_loc;
     vec3   u, v, w;
+    vec3   defocus_disk_u;       // Defocus disk horizontal radius
+    vec3   defocus_disk_v;       // Defocus disk vertical radius
 
 public :
     void render(const hittable& world) {
@@ -61,9 +67,9 @@ private:
 
         // Camera
 
-        focal_length = focal_length = (lookfrom - lookat).length();
+        //focal_length = focal_length = (lookfrom - lookat).length();
         auto theta = degrees_to_radians(vfov);
-        viewport_height = 2 * std::tan(theta / 2) * focal_length;
+        viewport_height = 2 * std::tan(theta / 2) * focus_dist;
         viewport_width = viewport_height * (double(image_width) / image_height);
         camera_center = lookfrom;
 
@@ -87,10 +93,13 @@ private:
 
         // Calculate the location of the upper left pixel.
         viewport_upper_left = camera_center
-            -w * focal_length - viewport_u / 2 - viewport_v / 2;
+            -w * focus_dist - viewport_u / 2 - viewport_v / 2;
         pixel00_loc = viewport_upper_left + 0.5 * (pixel_delta_u + pixel_delta_v);
 
-        
+        // Calculate the camera defocus disk basis vectors.
+        auto defocus_radius = focus_dist * std::tan(degrees_to_radians(defocus_angle / 2));
+        defocus_disk_u = u * defocus_radius;
+        defocus_disk_v = v * defocus_radius;
     }
 
     color ray_color(const ray& r, int depth, const hittable& world) const {
@@ -99,7 +108,7 @@ private:
 
         hit_record hit;
         
-        if (world.hit(r, interval(0.01, infinity), hit)) {
+        if (world.hit(r, interval(0.001, infinity), hit)) {
             //vec3 random_direction = random_on_hemisphere(hit.normal);
             ray scattered;
             color attenuation;
@@ -125,11 +134,17 @@ private:
             + ((i + offset.x()) * pixel_delta_u)
             + ((j + offset.y()) * pixel_delta_v);
 
-        auto ray_origin = camera_center;
+        auto ray_origin = (defocus_angle <= 0) ? camera_center : defocus_disk_sample();
         auto ray_direction = pixel_sample - ray_origin;
 
         return ray(ray_origin, ray_direction);
 
+    }
+
+    point3 defocus_disk_sample() const {
+        // Returns a random point in the camera defocus disk.
+        auto p = random_in_unit_disk();
+        return camera_center + (p[0] * defocus_disk_u) + (p[1] * defocus_disk_v);
     }
 
     vec3 sample_square() const {
