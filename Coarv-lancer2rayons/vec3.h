@@ -134,4 +134,11 @@ inline vec3 reflect(const vec3& v, const vec3& n) {
     return v - 2 * b;
 }
 
+inline vec3 refract(const vec3& inci, const vec3& n, double etaInci_over_etat) {
+    auto cosTetha = std::fmin( dot(-inci, n), 1.0) ;
+    auto R_out_perp = etaInci_over_etat * (inci + cosTetha * n);
+    auto R_out_parr = -std::sqrt(1 - R_out_perp.length_squared()) * n;
+    return R_out_perp + R_out_parr;
+}
+
 #endif
