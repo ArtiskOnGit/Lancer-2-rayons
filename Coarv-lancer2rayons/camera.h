@@ -1,8 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
-#include "vec3.h"
+//#include "vec3.h"
 #include "hittable.h"
-
+#include "material.h"
 class camera {
 public:
     /* Public Camera Parameters Here */
@@ -79,9 +79,15 @@ private:
 
         hit_record hit;
         
-        if (world.hit(r, interval(0.001, infinity), hit)) {
-            vec3 random_direction = random_on_hemisphere(hit.normal);
-            return 0.5 * ray_color(ray(hit.p, random_direction), depth - 1, world);;
+        if (world.hit(r, interval(0.01, infinity), hit)) {
+            //vec3 random_direction = random_on_hemisphere(hit.normal);
+            ray scattered;
+            color attenuation;
+            if (hit.mat->scatter(r, hit, attenuation, scattered)) {
+                //vec3 random_direction = hit.normal + random_unit_vector();
+                return attenuation * ray_color(scattered, depth - 1, world);;
+            }
+            
         }
 
         vec3 dir = unit_vector(r.direction());

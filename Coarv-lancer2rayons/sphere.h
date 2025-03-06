@@ -8,8 +8,9 @@ class Sphere : public hittable {
 private :
 	point3 center;
 	double radius;
+    shared_ptr<material> mat;
 public :
-	Sphere(const point3 &c,const double &r) :center(c), radius(std::fmax(0, r)) {}
+	Sphere(const point3 &c,const double &r, shared_ptr<material> mat) :center(c), radius(std::fmax(0, r)), mat(mat) {}
 
 	bool hit(const ray& r, interval ray_t, hit_record& rec) const override{
         point3 c_q = center - r.origin();
@@ -27,8 +28,9 @@ public :
         if (ray_t.surrounds(root)) {
             rec.t = root;
             rec.p = r.at(rec.t);
-           // rec.normal = unit_vector(rec.p - center);
             rec.set_face_normal(r, unit_vector(rec.p - center));
+            rec.mat = mat;
+
             return true;
         }
         else {
@@ -36,8 +38,8 @@ public :
             if (ray_t.surrounds(root)) {
                 rec.t = root;
                 rec.p = r.at(rec.t);
-                //rec.normal = unit_vector(rec.p - center);
                 rec.set_face_normal(r, unit_vector(rec.p - center));
+                rec.mat = mat;
                 
                 return true;
             }

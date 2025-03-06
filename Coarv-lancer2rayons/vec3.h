@@ -52,8 +52,12 @@ public:
         return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
     }
 
-    
-    
+    bool near_zero() const {
+        // Return true if the vector is close to zero in all dimensions.
+
+        return (std::fabs(e[0]) < s) && (std::fabs(e[1]) < s) && (std::fabs(e[2]) < s);
+    }
+private: double s = 1e-8;
 };
 
 
@@ -123,6 +127,11 @@ static vec3 random_on_hemisphere(const vec3& normal) {
         return ruv;
     }
     return -ruv;
+}
+
+inline vec3 reflect(const vec3& v, const vec3& n) {
+    auto b = dot(v, n) * n;
+    return v - 2 * b;
 }
 
 #endif
